@@ -10,6 +10,27 @@ import { ProfilesService } from './modules/profiles/profiles.service';
 import { ProfileController } from './modules/profiles/profiles.controller';
 import { ProfileModule } from './modules/profiles/profiles.module';
 import { Profile } from './common/tablle.jadval/Profiles.jdaval';
+import { SubscriptionPlansService } from './common/Subscription_plans/subscription_plans.service';
+import { SubscriptionPlansController } from './common/Subscription_plans/subscription_plans.controller';
+import { SubscriptionPlansModule } from './common/Subscription_plans/subscription_plans.module';
+import { UserSubscriptionsModule } from './common/User_subscriptions/user_subscriptions.module';
+import { PaymentsController } from './common/Payments/payments.controller';
+import { PaymentsService } from './common/Payments/payments.service';
+import { PaymentsModule } from './common/Payments/payments.module';
+import { CategoriesModule } from './common/Categories/categories.module';
+import { MoviesService } from './common/Movies/movies.service';
+import { MoviesController } from './common/Movies/movies.controller';
+import { MoviesModule } from './common/Movies/movies.module';
+import { MovieCategoriesModule } from './common/Movie_categories/movie_categories.module';
+import { MovieFilesController } from './common/Movie_files/movie_files.controller';
+import { MovieFilesModule } from './common/Movie_files/movie_files.module';
+import { FavoritesService } from './common/Favorites/favorites.service';
+import { FavoritesController } from './common/Favorites/favorites.controller';
+import { FavoritesModule } from './common/Favorites/favorites.module';
+import { ReviewsModule } from './common/Reviews/reviews.module';
+import { WatchHistoryController } from './common/Watch_history/watch_history.controller';
+import { WatchHistoryService } from './common/Watch_history/watch_history.service';
+import { WatchHistoryModule } from './common/Watch_history/watch_history.module';
 
 @Module({
   imports: [
@@ -23,10 +44,10 @@ import { Profile } from './common/tablle.jadval/Profiles.jdaval';
       useFactory: (config: ConfigService) => ({
         dialect: 'postgres',
         host: config.get<string>('DB_HOS'),
-        port: config.get<number>('DB_POT'),
-        username: config.get<string>('DB_USERNAME'),
-        password: config.get<string>('DB_PASSWORD'),
-        database: config.get<string>('DB_NAME'),
+          port: config.get<number>('DB_POT'),
+          username: config.get<string>('DB_USERNAME'),
+          password: config.get<string>('DB_PASSWORD'),
+          database: config.get<string>('DB_NAME'),
         autoLoadModels: true,
         synchronize: true,
         models: [User, Profile],
@@ -38,6 +59,18 @@ import { Profile } from './common/tablle.jadval/Profiles.jdaval';
     AuthModule,
     RedisModule,
     ProfileModule,
+    SubscriptionPlansModule,
+    UserSubscriptionsModule,
+    PaymentsModule,
+    CategoriesModule,
+    MoviesModule,
+    MovieCategoriesModule,
+    MovieFilesModule,
+    FavoritesModule,
+    ReviewsModule,
+    WatchHistoryModule,
   ],
+  providers: [SubscriptionPlansService, PaymentsService, MoviesService, FavoritesService, WatchHistoryService],
+  controllers: [SubscriptionPlansController, PaymentsController, MoviesController, MovieFilesController, FavoritesController, WatchHistoryController],
 })
 export class AppModule {}
