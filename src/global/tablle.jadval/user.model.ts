@@ -2,11 +2,16 @@ import {
   Column,
   DataType,
   Default,
+  HasMany,
+  HasOne,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
 import { Tarif, UserRole } from 'src/global/type/user';
+import { Review } from './Reviews';
+import { WatchHistory } from './Watch_history';
+import { Profile } from './Profiles.jdaval';
 
 @Table({ tableName: 'users' })
 export class User extends Model {
@@ -35,4 +40,12 @@ export class User extends Model {
     defaultValue: Tarif.free,
   })
   TARIF: Tarif;
+
+  @HasMany(() => Review)
+  reviews: Review[];
+  @HasMany(() => WatchHistory)
+  watchHistory: WatchHistory[];
+
+  @HasOne(() => Profile)
+  profile: Profile;
 }

@@ -1,6 +1,6 @@
 import {BadRequestException, ConflictException,Injectable,NotFoundException,} from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from 'src/common/tablle.jadval/user.model';
+import { User } from 'src/global/tablle.jadval/user.model';
 import { LoginUserDto, RegisterUserDto, TokenDto } from './dto/create-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';

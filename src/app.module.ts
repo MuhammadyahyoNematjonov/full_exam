@@ -3,13 +3,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/user/user.module';
-import { User } from './common/tablle.jadval/user.model';
+import { User } from './global/tablle.jadval/user.model';
 import { MailerModule } from './common/maile/mailer.module';
 import { RedisModule } from './common/redis/redis.module';
 import { ProfilesService } from './modules/profiles/profiles.service';
 import { ProfileController } from './modules/profiles/profiles.controller';
 import { ProfileModule } from './modules/profiles/profiles.module';
-import { Profile } from './common/tablle.jadval/Profiles.jdaval';
+import { Profile } from './global/tablle.jadval/Profiles.jdaval';
 import { SubscriptionPlansService } from './common/Subscription_plans/subscription_plans.service';
 import { SubscriptionPlansController } from './common/Subscription_plans/subscription_plans.controller';
 import { SubscriptionPlansModule } from './common/Subscription_plans/subscription_plans.module';
@@ -31,6 +31,8 @@ import { ReviewsModule } from './common/Reviews/reviews.module';
 import { WatchHistoryController } from './common/Watch_history/watch_history.controller';
 import { WatchHistoryService } from './common/Watch_history/watch_history.service';
 import { WatchHistoryModule } from './common/Watch_history/watch_history.module';
+import { Review } from './global/tablle.jadval/Reviews';
+import { WatchHistory } from './global/tablle.jadval/Watch_history';
 
 @Module({
   imports: [
@@ -50,7 +52,7 @@ import { WatchHistoryModule } from './common/Watch_history/watch_history.module'
           database: config.get<string>('DB_NAME'),
         autoLoadModels: true,
         synchronize: true,
-        models: [User, Profile],
+        models: [User, Profile,Review,WatchHistory],
       }),
     }),
     UsersModule,

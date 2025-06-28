@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from 'src/common/tablle.jadval/user.model';
+import { User } from 'src/global/tablle.jadval/user.model';
 
 @Injectable()
 export class UsersService {

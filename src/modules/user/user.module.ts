@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersService } from './user.service';
 import { UsersController } from './user.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from 'src/common/tablle.jadval/user.model';
+import { User } from 'src/global/tablle.jadval/user.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([User])],

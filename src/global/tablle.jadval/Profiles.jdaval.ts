@@ -6,19 +6,23 @@ import {
   Model,
   PrimaryKey,
   Table,
+  BelongsTo,
 } from 'sequelize-typescript';
 import { User } from './user.model';
 
-@Table({ tableName: 'profile' })
+@Table({ tableName: 'profiles' })
 export class Profile extends Model {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column({ type: DataType.UUID })
-  user_id: string;
+  profile_id: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID })
-  userId: string;
+  user_id: string;
+
+  @BelongsTo(() => User)
+  user: User;
 
   @Column({ type: DataType.STRING, allowNull: true })
   full_name: string;
