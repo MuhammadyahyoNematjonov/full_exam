@@ -7,6 +7,7 @@ import {
   PrimaryKey,
   Table,
   BelongsTo,
+  Unique,
 } from 'sequelize-typescript';
 import { User } from './user.model';
 
@@ -18,7 +19,8 @@ export class Profile extends Model {
   profile_id: string;
 
   @ForeignKey(() => User)
-  @Column({ type: DataType.UUID })
+  @Unique
+  @Column({ type: DataType.UUID, allowNull: false })
   user_id: string;
 
   @BelongsTo(() => User)
